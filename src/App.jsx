@@ -13,33 +13,6 @@ const TEST_GIFS = [
 ];
 
 const App = () => {
-	const [location, setLocation] = useState(0);
-
-	useEffect(() => {
-		fetch('https://api.exchangeratesapi.io/latest?base=JPY')
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-			})
-			.catch(error => {
-				console.log(error);
-			});
-	}, []);
-
-	useEffect(
-		() => {
-			if (walletAddress) {
-				console.log('Fetching GIF list...');
-
-				// Call Solana program here.
-
-				// Set state
-				setGifList(TEST_GIFS);
-			}
-		},
-		[walletAddress]
-	);
-
 	const [walletAddress, setWalletAddress] = useState(null);
 	const [inputValue, setInputValue] = useState('');
 	const [gifList, setGifList] = useState([]);
@@ -138,6 +111,19 @@ const App = () => {
 		window.addEventListener('load', onLoad);
 		return () => window.removeEventListener('load', onLoad);
 	}, []);
+
+  useEffect(() => {
+			if (walletAddress) {
+				console.log('Fetching GIF list...');
+
+				// Call Solana program here.
+
+				// Set state
+				setGifList(TEST_GIFS);
+			}
+		},
+		[walletAddress]
+	);
 
 	return (
 		<div className="App">
