@@ -176,6 +176,7 @@ const App = () => {
     				{gifList.map(gif => (
     					<div className="gif-item" key={gif}>
     						<img src={gif.gifLink} alt={gif.gifLink} />
+                <p>{gif.userAddress.toString()}</p>
     					</div>
     				))}
     			</div>
